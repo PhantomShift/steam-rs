@@ -328,7 +328,7 @@ pub struct File {
     #[serde(default)]
     pub tags: Vec<Tag>,
     /// Vote data associated with the file.
-    pub vote_data: VoteData,
+    pub vote_data: Option<VoteData>,
     /// Playtime statistics associated with the file.
     pub playtime_stats: PlaytimeStats,
     /// The language of the file.
