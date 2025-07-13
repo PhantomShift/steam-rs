@@ -319,10 +319,13 @@ pub struct File {
     /// The number of reports.
     pub num_reports: u32,
     /// The child items associated with the file
-    pub children: Option<Vec<ChildFile>>,
+    #[serde(default)]
+    pub children: Vec<ChildFile>,
     /// Previews associated with the file.
+    #[serde(default)]
     pub previews: Vec<Preview>,
     /// Tags associated with the file.
+    #[serde(default)]
     pub tags: Vec<Tag>,
     /// Vote data associated with the file.
     pub vote_data: VoteData,
@@ -339,6 +342,7 @@ pub struct File {
     /// The revision number.
     pub revision: u32,
     /// Available revisions for the file.
+    #[serde(default)]
     pub available_revisions: Vec<u32>,
     /// Ban text check result.
     pub ban_text_check_result: u32,
@@ -351,6 +355,7 @@ pub struct PublishedFiles {
     pub total: u64,
     /// Details of the published files.
     #[serde(rename = "publishedfiledetails")]
+    #[serde(default)]
     pub published_file_details: Vec<File>,
 }
 
