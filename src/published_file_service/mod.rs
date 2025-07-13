@@ -5,7 +5,6 @@
 //!
 //! - CanSubscribe (undocumented)
 //! - Delete (undocumented)
-//! - GetDetails
 //! - GetSubSectionData
 //! - GetUserFileCount
 //! - GetUserFiles
@@ -26,6 +25,7 @@
 //! Endpoints that require a publisher key are not likely to be
 //! implemented in the near future, as they cannot be tested by developers.
 
+pub mod get_details;
 pub mod query_files;
 
 const INTERFACE: &str = "IPublishedFileService";

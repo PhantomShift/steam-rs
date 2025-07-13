@@ -3,7 +3,8 @@
 use crate::macros::error;
 
 error!(PublishedFileServiceError{
-    QueryFiles(String)
+    QueryFiles(String),
+    GetDetails(String),
 });
 
 error!(PlayerServiceError{

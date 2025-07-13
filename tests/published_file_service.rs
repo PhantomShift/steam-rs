@@ -8,6 +8,7 @@ use steam_rs::{
 mod common;
 
 const EXAMPLE_APP_ID: u32 = 440; // Team Fortress 2
+const EXAMPLE_ITEM_IDS: &[u64] = &[3345507915, 3476304156]; // 2Fort Classic REDUX and Broojlynn workshop items
 
 #[tokio::test]
 pub async fn query_files() {
@@ -48,4 +49,32 @@ pub async fn query_files() {
         .await
         .unwrap();
     println!("{:?}", query);
+}
+
+#[tokio::test]
+pub async fn get_details() {
+    let steam = Steam::new(&std::env::var("STEAM_API_KEY").expect("Missing an API key"));
+    let details = steam
+        .get_details(
+            Vec::from(EXAMPLE_ITEM_IDS),
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            None,
+            10,
+            EXAMPLE_APP_ID,
+            false,
+            None,
+            Some(true),
+            false,
+        )
+        .await
+        .unwrap();
+    assert_eq!(EXAMPLE_ITEM_IDS.len(), details.published_file_details.len());
+    println!("{:?}", details);
 }
