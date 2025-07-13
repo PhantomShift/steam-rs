@@ -262,6 +262,8 @@ pub struct File {
     pub hcontent_preview: String,
     /// The title of the file.
     pub title: String,
+    /// The description of the file.
+    pub file_description: Option<String>,
     /// The short description of the file.
     pub short_description: String,
     /// The time the file was created.
