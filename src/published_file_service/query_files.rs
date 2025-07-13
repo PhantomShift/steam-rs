@@ -265,7 +265,7 @@ pub struct File {
     /// The description of the file.
     pub file_description: Option<String>,
     /// The short description of the file.
-    pub short_description: String,
+    pub short_description: Option<String>,
     /// The time the file was created.
     pub time_created: u32,
     /// The time the file was last updated.
