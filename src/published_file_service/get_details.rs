@@ -85,7 +85,7 @@ impl Steam {
     /// * `admin_query` - Admin tool is doing a query, return hidden items.
     pub async fn get_details(
         &self,
-        published_file_ids: Vec<u64>,
+        published_file_ids: impl AsRef<[u64]>,
         include_tags: bool,
         include_additional_previews: bool,
         include_children: bool,
@@ -104,7 +104,10 @@ impl Steam {
     ) -> Result<FileDetails, PublishedFileServiceError> {
         let query = vec![
             format!("?key={}", &self.api_key),
-            format!("&{}", url_encode("publishedfileids", &published_file_ids)),
+            format!(
+                "&{}",
+                url_encode("publishedfileids", published_file_ids.as_ref())
+            ),
             format!("&includetags={}", include_tags),
             format!("&includeadditionalpreviews={}", include_additional_previews),
             format!("&includechildren={}", include_children),
